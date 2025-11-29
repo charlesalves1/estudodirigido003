@@ -1,0 +1,160 @@
+Passo 1 — 5W2H (Resumo de Requisitos)
+1. What – O que será feito
+
+Um sistema simples que controla alunos, planos e treinos.
+
+2. Why – Por que
+
+Para organizar matrículas, pagamentos e treinos sem papel.
+
+3. Where – Onde
+
+Sistema rodará no computador da academia.
+
+4. When – Quando
+
+Uso diário para cadastro, consulta e manutenção dos treinos.
+
+5. Who – Quem
+
+Recepcionistas, professores e o dono da academia.
+
+6. How – Como
+
+Usando classes e objetos em Python (POO).
+
+7. How much – Quanto
+
+Baixo custo: só computador + Python.
+
+🧩 Passo 2 — Identificar Entidades do Sistema (Classes)
+
+Esses serão os objetos principais:
+
+Aluno
+
+Plano
+
+Treino
+
+Professor (opcional mas realista)
+
+Pagamento (se quiser evoluir depois)
+
+🧱 Passo 3 — Atributos das Entidades
+Classe Aluno
+
+nome
+
+idade
+
+plano (objeto Plano)
+
+treino (objeto Treino)
+
+status_pagamento
+
+Classe Plano
+
+nome
+
+valor_mensal
+
+duração (em meses)
+
+Classe Treino
+
+lista_de_exercicios
+
+dias_da_semana
+
+professor_responsavel (objeto Professor)
+
+Classe Professor
+
+nome
+
+especialidade
+
+⚙️ Passo 4 — Comportamentos (Métodos)
+Aluno
+
+pagar_mensalidade()
+
+trocar_plano(novo_plano)
+
+definir_treino(treino)
+
+Plano
+
+calcular_valor_total()
+
+Treino
+
+adicionar_exercicio()
+
+remover_exercicio()
+
+listar_exercicios()
+
+Professor
+
+montar_treino(aluno)
+
+🤝 Passo 5 — Relações Entre Classes
+
+Um Aluno tem um Plano
+
+Um Aluno tem um Treino
+
+Um Treino tem um Professor
+
+Um Professor pode ter vários alunos
+
+Um Plano pode ser usado por muitos alunos
+
+Isso mostra associação e composição, conceitos fundamentais em POO.
+
+⭐ EXEMPLO EM CÓDIGO (versão simples)
+
+(Só para visualizar melhor — você não precisa decorar, só entender)
+
+class Plano:
+    def __init__(self, nome, valor_mensal, duracao):
+        self.nome = nome
+        self.valor_mensal = valor_mensal
+        self.duracao = duracao
+
+    def calcular_valor_total(self):
+        return self.valor_mensal * self.duracao
+
+
+class Professor:
+    def __init__(self, nome, especialidade):
+        self.nome = nome
+        self.especialidade = especialidade
+
+
+class Treino:
+    def __init__(self, professor):
+        self.exercicios = []
+        self.professor = professor
+
+    def adicionar_exercicio(self, exercicio):
+        self.exercicios.append(exercicio)
+
+    def listar_exercicios(self):
+        return self.exercicios
+
+
+class Aluno:
+    def __init__(self, nome, plano):
+        self.nome = nome
+        self.plano = plano
+        self.treino = None
+
+    def definir_treino(self, treino):
+        self.treino = treino
+
+    def trocar_plano(self, novo_plano):
+        self.plano = novo_plano
